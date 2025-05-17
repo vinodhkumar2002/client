@@ -1,0 +1,59 @@
+<div class="register-form">
+    <h2>Register</h2>
+  
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <!-- Username Field -->
+      <div class="form-group">
+        <label for="userName">Username</label>
+        <input id="userName" formControlName="userName" type="text" class="form-control" />
+        <div *ngIf="userName!.invalid && userName!.touched" class="error">
+          Username is required (min 3 characters)
+        </div>
+      </div>
+  
+      <!-- Email Field -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" formControlName="email" type="email" class="form-control" />
+        <div *ngIf="email!.invalid && email!.touched" class="error">
+          Enter a valid email address
+        </div>
+      </div>
+  
+      <!-- Password Field -->
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input id="password" formControlName="password" type="password" class="form-control" />
+        <div *ngIf="password!.invalid && password!.touched" class="error">
+          Password is required (min 6 characters)
+        </div>
+      </div>
+  
+      <!-- Confirm Password Field -->
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input id="confirmPassword" formControlName="confirmPassword" type="password" class="form-control" />
+        <div *ngIf="confirmPassword!.invalid && confirmPassword!.touched" class="error">
+          Confirm Password is required
+        </div>
+        <div *ngIf="confirmPassword!.errors?.['mismatch'] && confirmPassword!.touched" class="error">
+          Passwords do not match
+        </div>
+      </div>
+  
+      <!-- Mobile Number Field -->
+      <div class="form-group">
+        <label for="mobileNumber">Mobile Number</label>
+        <input id="mobileNumber" formControlName="mobileNumber" type="tel" class="form-control" />
+        <div *ngIf="mobileNumber!.invalid && mobileNumber!.touched" class="error">
+          Enter a valid phone number (e.g., +1 555-555-5555)
+        </div>
+      </div>
+      <div *ngIf="userExists" style="color: red;">UserName or Email already used.</div>
+      <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary">
+        Register
+      </button>
+    </form>
+    <a routerLink="/login">Already Registered?</a>
+  </div>
+  

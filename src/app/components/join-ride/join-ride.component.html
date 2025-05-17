@@ -1,0 +1,56 @@
+<div *ngIf="!searched" class="join-ride-container">
+    <form [formGroup]="joinRideForm" (ngSubmit)="onSubmit()">
+      <label>Starting Point:</label>
+      <input type="text" formControlName="startingPoint" required />
+  
+      <label>Ending Point:</label>
+      <input type="text" formControlName="endingPoint" required />
+  
+      <label>Journey Date:</label>
+      <input type="date" formControlName="date" required />
+  
+      <button type="submit">Search Rides</button>
+    </form>
+  </div>
+    
+    <div *ngIf="searched && rides.length==0 ">no Rides found</div>
+    <div *ngIf="rides.length > 0 && !profileViewed">
+      <h3>Available Rides</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>View Profile</th>
+            <th>Car Model</th>
+            <th>Car Number</th>
+            <th>Start</th>
+            <th>End</th>
+            <th>Date</th>
+            <th>Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ride of rides;index as i">
+            <td><button (click)="viewProfile(i)">View Profile</button></td>
+            <td>{{ ride.carModel }}</td>
+            <td>{{ ride.carNumber }}</td>
+            <td>{{ ride.startingPoint }}</td>
+            <td>{{ ride.endingPoint }}</td>
+            <td>{{ ride.date }}</td>
+            <td>{{ ride.journeyTime }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+    <div *ngIf="profileViewed" class="container">
+      <div class="profile-card">
+        <h2>{{ profile.userName }}</h2>
+        <p>Email: {{ profile.email }}</p>
+        <p>Mobile: {{ profile.mobileNumber }}</p>
+        <button (click)="close()">Close</button>
+      </div>
+    </div>
+    
+    
+    
+  

@@ -1,0 +1,48 @@
+.rides-table-container {
+    padding: 2rem;
+    overflow-x: auto;
+  }
+  
+  .rides-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .rides-table thead {
+    background-color: #343a40;
+    color: #ffffff;
+    text-align: left;
+  }
+  
+  .rides-table th, .rides-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  .rides-table tr:hover {
+    background-color: #f1f3f5;
+  }
+  
+  .rides-table td {
+    color: #212529;
+  }
+  
+  .delete-btn {
+    background-color: #dc3545;
+    color: #ffffff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .delete-btn:hover {
+    background-color: #c82333;
+  }
+  

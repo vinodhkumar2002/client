@@ -3,6 +3,13 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "java",
+      "name": "CarbookApplication",
+      "request": "launch",
+      "mainClass": "com.vk.carbook.CarbookApplication",
+      "projectName": "CarApp"
+    },
+    {
       "name": "ng serve",
       "type": "chrome",
       "request": "launch",

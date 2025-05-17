@@ -1,0 +1,72 @@
+<div class="page-center">
+  <div class="form-wrapper">
+    <div *ngIf="!status">
+      <h1 class="form-title">Welcome, {{ userName }}</h1>
+      <form [formGroup]="rideForm" (ngSubmit)="onSubmit()" class="ride-form">
+        
+        <div class="form-group">
+          <label>Car Model</label>
+          <input type="text" formControlName="carModel" />
+          <div class="error" *ngIf="rideForm.get('carModel')?.invalid && rideForm.get('carModel')?.touched">
+            Car Model is required.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Car Number</label>
+          <input type="text" formControlName="carNumber" />
+          <div class="error" *ngIf="rideForm.get('carNumber')?.invalid && rideForm.get('carNumber')?.touched">
+            Car Number is required.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>License Number</label>
+          <input type="text" formControlName="licenseNumber" />
+          <div class="error" *ngIf="rideForm.get('licenseNumber')?.invalid && rideForm.get('licenseNumber')?.touched">
+            License Number is required.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Starting Point</label>
+          <input type="text" formControlName="startingPoint" />
+          <div class="error" *ngIf="rideForm.get('startingPoint')?.invalid && rideForm.get('startingPoint')?.touched">
+            Starting Point is required.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Ending Point</label>
+          <input type="text" formControlName="endingPoint" />
+          <div class="error" *ngIf="rideForm.get('endingPoint')?.invalid && rideForm.get('endingPoint')?.touched">
+            Ending Point is required.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Journey Date</label>
+          <input type="date" formControlName="date" [min]="minDate" />
+          <div class="error" *ngIf="rideForm.get('date')?.invalid && rideForm.get('date')?.touched">
+            Journey Date is required and cannot be in the past.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Journey Time</label>
+          <input type="time" formControlName="journeyTime" />
+          <div class="error" *ngIf="rideForm.get('journeyTime')?.invalid && rideForm.get('journeyTime')?.touched">
+            Journey Time is required.
+          </div>
+        </div>
+
+        <button type="submit" [disabled]="rideForm.invalid" class="submit-btn">🚀 Submit Ride</button>
+      </form>
+    </div>
+
+    <div *ngIf="status" class="status-message">
+      <h2>✅ Ride added successfully!</h2>
+      <button [routerLink]="['/home']" class="home-btn">Back to Home</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="rides-table-container">
+    <table class="rides-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Car Model</th>
+          <th>Car Number</th>
+          <th>License Number</th>
+          <th>Start Point</th>
+          <th>End Point</th>
+          <th>Date</th>
+          <th>Journey Time</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let v of viewRides; index as i">
+          <td>{{i + 1}}</td>
+          <td>{{v.carModel}}</td>
+          <td>{{v.carNumber}}</td>
+          <td>{{v.licenseNumber}}</td>
+          <td>{{v.startingPoint}}</td>
+          <td>{{v.endingPoint}}</td>
+          <td>{{v.date}}</td>
+          <td>{{v.journeyTime}}</td>
+          <td>
+            <button class="delete-btn" (click)="deleteRide(v.rideId)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
