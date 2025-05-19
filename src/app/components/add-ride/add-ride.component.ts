@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AddRideService } from '../../services/add-ride.service';
 import { User } from '../../models/user';
 import { RideDetails } from '../../models/ride-details';
+import { getFromLocalStorage } from '../../utils/storage.util';
 
 @Component({
   selector: 'app-add-ride',
@@ -15,7 +16,7 @@ export class AddRideComponent implements OnInit{
   status!:boolean;
   userId?:number;
   minDate: string = '';
- userName:any=localStorage.getItem('userName');
+ userName:any=getFromLocalStorage("userName");
  rideDetails!:RideDetails;
 
   constructor(private fb: FormBuilder ,private service:AddRideService) {
@@ -33,8 +34,7 @@ export class AddRideComponent implements OnInit{
    this.status=false;
    const today = new Date();
    this.minDate = today.toISOString().split('T')[0];
-   console.log(localStorage.getItem('userId'))
-   this.userId=Number(localStorage.getItem('userId'))
+   this.userId=Number(getFromLocalStorage("userID"))
    
 
    
