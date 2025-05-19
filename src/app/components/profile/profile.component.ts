@@ -1,8 +1,7 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { User } from '../../models/user';
-import { isPlatformBrowser } from '@angular/common';
-import { PLATFORM_ID } from '@angular/core';
 import { getFromLocalStorage } from '../../utils/storage.util';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-profile',
@@ -20,17 +19,24 @@ export class ProfileComponent {
   };
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+    console.log('ProfileComponent: Initializing...');
+
     if (isPlatformBrowser(this.platformId)) {
-      console.log('Browser environment detected');
-      this.currentUser = {
-        userId: null,
-        userName: getFromLocalStorage('userName'),
-        password: null,
-        email: getFromLocalStorage('email'),
-        mobileNumber: getFromLocalStorage('mobileNumber')
-      };
+      console.log('ProfileComponent: Running in browser context');
+      try {
+        this.currentUser = {
+          userId: null,
+          userName: getFromLocalStorage('userName'),
+          password: null,
+          email: getFromLocalStorage('email'),
+          mobileNumber: getFromLocalStorage('mobileNumber')
+        };
+        console.log('ProfileComponent: User data loaded:', this.currentUser);
+      } catch (error) {
+        console.error('ProfileComponent: Error accessing localStorage:', error);
+      }
     } else {
-      console.log('Server environment detected - Skipping localStorage access');
+      console.warn('ProfileComponent: Running in server context - localStorage not accessible');
     }
   }
 }
