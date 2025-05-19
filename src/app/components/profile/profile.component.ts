@@ -25,7 +25,7 @@ export class ProfileComponent {
       console.log('ProfileComponent: Running in browser context');
       try {
         this.currentUser = {
-          userId: null,
+          userId: null, 
           userName: getFromLocalStorage('userName'),
           password: null,
           email: getFromLocalStorage('email'),
