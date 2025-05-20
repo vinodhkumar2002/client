@@ -96,7 +96,7 @@
             "browserTarget": "carbook:build:production",
             "serverTarget": "carbook:server:production",
             "routes": [
-              "/profile"
+              
             ]
           },
           "configurations": {

@@ -14,6 +14,7 @@ export class AddRideService {
 
 
   public addRide(rideDetails:RideDetails){
+    console.log(rideDetails)
     return this.http.post(this.baseUrl+"rideDetails",rideDetails);
   }
 }
