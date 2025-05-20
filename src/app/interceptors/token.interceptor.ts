@@ -1,7 +1,9 @@
 // import { HttpInterceptorFn } from '@angular/common/http';
 
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
+import { getFips } from "node:crypto";
 import { Observable } from "rxjs";
+import { getFromLocalStorage } from "../utils/storage.util";
 
 // export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
 
@@ -22,7 +24,7 @@ import { Observable } from "rxjs";
 // };
 export class tokenInterceptor implements HttpInterceptor{
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    let token:any=localStorage.getItem('token');
+    let token:any=getFromLocalStorage("token")
     console.log("interceptor activated",token)
     if(token!=null){
       req=req.clone({
