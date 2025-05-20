@@ -1,3 +1,3 @@
 export const environment = {
-    backendApi:"https://updated-deployement.onrender.com"
+    backendApi:"https://updated-deployement.onrender.com/"
 };
